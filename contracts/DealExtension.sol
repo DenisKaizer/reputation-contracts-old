@@ -1,8 +1,22 @@
 pragma solidity ^0.4.0;
 
+import "./Permissions.sol";
+import "./Reputation.sol";
 
 contract DealExtension {
-  function DealExtension(){
 
+  address permissionsContractAddress = 0x0;
+  address owner = msg.sender;
+  string key;
+
+  modifier onlyOwner {
+    require(msg.sender == owner);
+    _;
   }
+
+  function changeReputation(){
+    require(Permissions(permissionsContractAddress).checkPermissions(sender, level));
+    Reputation(reputationContractAddress).change()
+  }
+
 }
