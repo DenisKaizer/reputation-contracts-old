@@ -19,4 +19,8 @@ contract DealExtension {
     Reputation(reputationContractAddress).change(userAddress, value, category, this);
   }
 
+  function resolveDeal(){
+
+  }
+
 }
