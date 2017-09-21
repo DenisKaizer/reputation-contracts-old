@@ -14,9 +14,9 @@ contract DealExtension {
     _;
   }
 
-  function changeReputation(){
-    require(Permissions(permissionsContractAddress).checkPermissions(sender, level));
-    Reputation(reputationContractAddress).change()
+  function changeReputation(address userAddress, int value, string category) internal {
+    require(Permissions(permissionsContractAddress).checkPermissions(msg.sender, level));
+    Reputation(reputationContractAddress).change(userAddress, value, category, this);
   }
 
 }

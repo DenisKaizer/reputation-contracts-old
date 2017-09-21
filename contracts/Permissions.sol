@@ -19,7 +19,7 @@ contract Permissions is PermissionNamesExtension{
 
   function setPermission(address allowedAddress,uint level){
     require(level <= allowedLevelToSet);
-    require(checkPermissions(allowedAddress, getLevel("setPerm")));
+    require(checkPermissions(msg.sender, PermissionNamesExtension.getLevel("setPerm")));
     permissions[allowedAddress] = level;
   }
 }
