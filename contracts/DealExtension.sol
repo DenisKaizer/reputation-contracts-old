@@ -3,6 +3,7 @@ pragma solidity ^0.4.0;
 import "./Permissions.sol";
 import "./Reputation.sol";
 
+
 contract DealExtension {
 
   address permissionsContractAddress = 0x0;
@@ -18,9 +19,4 @@ contract DealExtension {
     require(Permissions(permissionsContractAddress).checkPermissions(msg.sender, level));
     Reputation(reputationContractAddress).change(userAddress, value, category, this);
   }
-
-  function resolveDeal(){
-
-  }
-
 }

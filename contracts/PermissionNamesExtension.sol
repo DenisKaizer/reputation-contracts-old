@@ -1,19 +1,23 @@
 pragma solidity ^0.4.0;
 
+import "./PermissionNames.sol";
+
+
 contract PermissionNamesExtension {
 
   address owner = msg.sender;
-  address permissionNamesContractAddress;
+  address permissionNamesContractAddress = 0x0;
 
   modifier onlyOwner {
     require(msg.sender == owner);
     _;
   }
 
-  function setPermissionNamesContractAddress(address _permissionNamesContractAddress) onlyOwner{
+  function setPermissionNamesContractAddress(address _permissionNamesContractAddress) onlyOwner {
     permissionNamesContractAddress = _permissionNamesContractAddress;
   }
-  function getLevel(bytes32 name) returns(uint){
-    return(PermissionsNames(permissionNamesContractAddress).levelsNames(name));
+
+  function getLevel(bytes32 name) returns(uint) {
+    return PermissionsNames(permissionNamesContractAddress).levelsNames(name);
   }
 }
