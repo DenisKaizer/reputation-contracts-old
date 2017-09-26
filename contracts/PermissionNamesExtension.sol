@@ -7,7 +7,6 @@ contract PermissionNamesExtension {
 
   address owner = msg.sender;
   address permissionNamesContractAddress = 0x0;
-
   modifier onlyOwner {
     require(msg.sender == owner);
     _;
@@ -17,7 +16,7 @@ contract PermissionNamesExtension {
     permissionNamesContractAddress = _permissionNamesContractAddress;
   }
 
-  function getLevel(bytes32 name) returns(uint) {
-    return PermissionsNames(permissionNamesContractAddress).levelsNames(name);
+  function getLevelbyName(bytes32 name) returns(uint) {
+    return PermissionsNames(permissionNamesContractAddress).namesMapping(name);
   }
 }

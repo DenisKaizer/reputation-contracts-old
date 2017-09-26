@@ -3,7 +3,7 @@ pragma solidity ^0.4.0;
 
 contract PermissionsNames {
 
-  mapping (bytes32 => uint) public map;
+  mapping (bytes32 => uint) public namesMapping;
   address owner = msg.sender;
 
   function PermissionsNames() {
@@ -16,6 +16,6 @@ contract PermissionsNames {
   }
 
   function setPermission(bytes32 name, uint level) onlyOwner {
-    map[name] = level;
+    namesMapping[name] = level;
   }
 }
