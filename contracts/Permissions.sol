@@ -7,10 +7,11 @@ contract Permissions is PermissionNamesExtension {
 
   mapping (address => uint) public permissions;
   uint permSetLevel;
-  uint allowedLevelToSet;
+  //uint allowedLevelToSet;
+  address owner = msg.sender;
 
   function checkPermission(address allowedAddress,bytes32 levelName) returns (bool) {
-    uint level = PermissionNamesExtension.getLevelByName(levelName);
+    uint level = getLevelbyName(levelName);
     if (permissions[allowedAddress] == level) {
       return true;
     }
@@ -19,9 +20,14 @@ contract Permissions is PermissionNamesExtension {
   }
 
   function setPermission(address allowedAddress,bytes32 levelName) {
-    uint level = PermissionNamesExtension.getLevelByName(levelName);
-    require(level <= allowedLevelToSet);
-    require(checkPermissions(msg.sender, PermissionNamesExtension.getLevel("setPerm")));
+    uint level = getLevelbyName(levelName);
+    //require(level <= allowedLevelToSet);
+    require(checkPermission(msg.sender, "setPerm"));
     permissions[allowedAddress] = level;
+  }
+
+  function setAdminPerms(address allowedAddress)  {
+    require(msg.sender == owner);
+    permissions[allowedAddress] = getLevelbyName("setPerm");
   }
 }

@@ -7,10 +7,10 @@ contract PermissionExtension {
   address permissionsContractAddress;
 
   function setPermission(address dealAddress, bytes32 levelName) {
-    Permissions(pemissionsContracrAddress).setPermission(dealAddress, levelName);
+    Permissions(permissionsContractAddress).setPermission(dealAddress, levelName);
   }
 
-  function setPermissionsContractAddress(address _permissionsContractAddress) onlyOwner {
+  function setPermissionsContractAddress(address _permissionsContractAddress)  {
     permissionsContractAddress = _permissionsContractAddress;
   }
 }
