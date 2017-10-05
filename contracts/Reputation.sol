@@ -34,6 +34,4 @@ contract Reputation  {
     require(Permissions(permissionsContractAddress).checkPermission(msg.sender,"getReputation"));
     return profiles[userAddress].reputationByCategories[category];
   }
-
-
 }
