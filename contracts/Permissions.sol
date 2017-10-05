@@ -15,14 +15,13 @@ contract Permissions is PermissionNamesExtension {
     if (permissions[allowedAddress] == level) {
       return true;
     }
-
     return false;
   }
 
-  function setPermission(address allowedAddress,bytes32 levelName) {
-    uint level = getLevelbyName(levelName);
-    //require(level <= allowedLevelToSet);
+
+  function setPermission(address allowedAddress, bytes32 levelName) {
     require(checkPermission(msg.sender, "setPerm"));
+    uint level = getLevelbyName(levelName);
     permissions[allowedAddress] = level;
   }
 

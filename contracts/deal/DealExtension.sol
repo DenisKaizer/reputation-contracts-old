@@ -21,4 +21,7 @@ contract DealExtension {
     reputationContractAddress = newAddress;
   }
 
+  function test() internal returns(uint) {
+    return (1);
+  }
 }

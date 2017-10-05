@@ -15,7 +15,7 @@ contract PermissionsNames {
     _;
   }
 
-  function setPermission(bytes32 name, uint level) onlyOwner {
+  function setPermissionLevel(bytes32 name, uint level) onlyOwner {
     namesMapping[name] = level;
   }
 }

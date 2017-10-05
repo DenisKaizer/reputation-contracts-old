@@ -4,9 +4,9 @@ import "./Permissions.sol";
 
 contract PermissionExtension {
 
-  address permissionsContractAddress;
+  address public permissionsContractAddress;
 
-  function setPermission(address dealAddress, bytes32 levelName) {
+  function setPerm(address dealAddress, bytes32 levelName) {
     Permissions(permissionsContractAddress).setPermission(dealAddress, levelName);
   }
 
